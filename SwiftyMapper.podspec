@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "SwiftyMapper"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "A better swift object mapper."
   s.description      = "A better swift object mapper."
   s.homepage         = "https://github.com/huajiahen/SwiftyMapper"

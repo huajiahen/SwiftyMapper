@@ -16,7 +16,7 @@ public final class MapToJSON {
     }
     
     private var content: ContentType = .None
-    var JSON: AnyObject? {
+    public var JSON: AnyObject? {
         get {
             switch content {
             case .JSON(let JSONContent):
@@ -42,14 +42,14 @@ public final class MapToJSON {
         }
     }
     
-    func JSONData() throws -> NSData? {
+    public func JSONData() throws -> NSData? {
         guard JSON != nil else {
             return nil
         }
         return try NSJSONSerialization.dataWithJSONObject(JSON!, options: NSJSONWritingOptions())
     }
     
-    func JSONString(prettyPrinted: Bool = true) throws -> String? {
+    public func JSONString(prettyPrinted: Bool = true) throws -> String? {
         guard JSON != nil else {
             return nil
         }
@@ -57,6 +57,10 @@ public final class MapToJSON {
         let JSONData = try NSJSONSerialization.dataWithJSONObject(JSON!, options: writingOptions)
         return String(data: JSONData, encoding: NSUTF8StringEncoding)
     }
+    
+    //MARK: - Init
+    
+    public init() {}
     
     //MARK: - Subscript
     
