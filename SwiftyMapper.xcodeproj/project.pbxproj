@@ -927,6 +927,7 @@
 				6DCFCF361C7B4B16008ECFCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6DCFCF4D1C7B4B29008ECFCF /* Build configuration list for PBXNativeTarget "SwiftyMapper-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -935,6 +936,7 @@
 				6DCFCF4F1C7B4B29008ECFCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6DCFCF501C7B4B29008ECFCF /* Build configuration list for PBXNativeTarget "SwiftyMapperTests-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -943,6 +945,7 @@
 				6DCFCF521C7B4B29008ECFCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6DCFCF691C7B4B39008ECFCF /* Build configuration list for PBXNativeTarget "SwiftyMapper-Cocoa" */ = {
 			isa = XCConfigurationList;
@@ -951,6 +954,7 @@
 				6DCFCF6B1C7B4B39008ECFCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6DCFCF6C1C7B4B39008ECFCF /* Build configuration list for PBXNativeTarget "SwiftyMapperTests-Cocoa" */ = {
 			isa = XCConfigurationList;
@@ -959,6 +963,7 @@
 				6DCFCF6E1C7B4B39008ECFCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
