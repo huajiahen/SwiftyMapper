@@ -12,6 +12,7 @@
 		6D03CD8B1C5E150D0059EAC9 /* SwiftyMapperFromJSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D03CD8A1C5E150D0059EAC9 /* SwiftyMapperFromJSONTests.swift */; };
 		6D03CD981C5E15450059EAC9 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D03CD951C5E15450059EAC9 /* Extension.swift */; };
 		6D03CD991C5E15450059EAC9 /* MapFromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D03CD961C5E15450059EAC9 /* MapFromJSON.swift */; };
+		6D33AD5A1CF0412300BC9DB7 /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D33AD591CF0412300BC9DB7 /* Operator.swift */; };
 		6DCFCF211C782FFB008ECFCF /* MapToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCFCF201C782FFB008ECFCF /* MapToJSON.swift */; };
 		6DCFCF231C785843008ECFCF /* SwiftyMapperToJSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCFCF221C785843008ECFCF /* SwiftyMapperToJSONTests.swift */; };
 		6DCFCF251C785C4F008ECFCF /* TestClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCFCF241C785C4F008ECFCF /* TestClass.swift */; };
@@ -77,6 +78,7 @@
 		6D03CD8C1C5E150D0059EAC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D03CD951C5E15450059EAC9 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		6D03CD961C5E15450059EAC9 /* MapFromJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapFromJSON.swift; sourceTree = "<group>"; };
+		6D33AD591CF0412300BC9DB7 /* Operator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
 		6DCFCF201C782FFB008ECFCF /* MapToJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapToJSON.swift; sourceTree = "<group>"; };
 		6DCFCF221C785843008ECFCF /* SwiftyMapperToJSONTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyMapperToJSONTests.swift; sourceTree = "<group>"; };
 		6DCFCF241C785C4F008ECFCF /* TestClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestClass.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				6DCFCF201C782FFB008ECFCF /* MapToJSON.swift */,
 				6DCFCF261C7B467A008ECFCF /* Mappable.swift */,
 				6D03CD951C5E15450059EAC9 /* Extension.swift */,
+				6D33AD591CF0412300BC9DB7 /* Operator.swift */,
 				6D03CD7E1C5E150D0059EAC9 /* SwiftyMapper.h */,
 				6D03CD801C5E150D0059EAC9 /* Info.plist */,
 			);
@@ -472,6 +475,7 @@
 			files = (
 				6D03CD991C5E15450059EAC9 /* MapFromJSON.swift in Sources */,
 				6DCFCF211C782FFB008ECFCF /* MapToJSON.swift in Sources */,
+				6D33AD5A1CF0412300BC9DB7 /* Operator.swift in Sources */,
 				6D03CD981C5E15450059EAC9 /* Extension.swift in Sources */,
 				6DCFCF271C7B467A008ECFCF /* Mappable.swift in Sources */,
 			);
