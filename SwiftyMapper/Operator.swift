@@ -6,7 +6,7 @@
 //  Copyright © 2016 huajiahen. All rights reserved.
 //
 
-public infix operator <- {associativity left precedence 90}
+infix operator <- {associativity left precedence 90}
 
 public func <-<T: Mappable>(inout lhs: T, rhs: MapFromJSON) {
     if let unwrapped: T = rhs.value() {
