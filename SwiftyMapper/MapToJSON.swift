@@ -82,9 +82,9 @@ public final class MapToJSON {
     
     //MARK: - Map
     
-    //MARK: Mappable
+    //MARK: Serializable
     
-    public func map<T: Mappable>(object: T?) -> MapToJSON {
+    public func map<T: Serializable>(object: T?) -> MapToJSON {
         if object == nil {
             JSON = nil
         } else {
@@ -93,7 +93,7 @@ public final class MapToJSON {
         return self
     }
     
-    public func map<T: Mappable>(object: [T]?) -> MapToJSON {
+    public func map<T: Serializable>(object: [T]?) -> MapToJSON {
         if let mapArray = object?.map({
             MapToJSON().map($0)
         }) {
@@ -104,7 +104,7 @@ public final class MapToJSON {
         return self
     }
     
-    public func map<T: Mappable>(object: [T?]?) -> MapToJSON {
+    public func map<T: Serializable>(object: [T?]?) -> MapToJSON {
         if let mapArray = object?.map({
             MapToJSON().map($0)
         }) {
@@ -115,7 +115,7 @@ public final class MapToJSON {
         return self
     }
     
-    public func map<T: Mappable>(object: [String: T]?) -> MapToJSON {
+    public func map<T: Serializable>(object: [String: T]?) -> MapToJSON {
         if let mapDict = object?.mapValues({
             MapToJSON().map($0)
         }) {
@@ -126,7 +126,7 @@ public final class MapToJSON {
         return self
     }
     
-    public func map<T: Mappable>(object: [String: T?]?) -> MapToJSON {
+    public func map<T: Serializable>(object: [String: T?]?) -> MapToJSON {
         if let mapDict = object?.mapValues({
             MapToJSON().map($0)
         }) {

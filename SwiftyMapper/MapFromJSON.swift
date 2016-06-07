@@ -30,25 +30,25 @@ public final class MapFromJSON {
         return JSON as? [String: AnyObject]
     }
     
-    //MARK: Mappable
+    //MARK: Deserializable
     
-    public func value<T: Mappable>() -> T? {
+    public func value<T: Deserializable>() -> T? {
         return T.mapFromJSON(self)
     }
     
-    public func value<T: Mappable>() -> [T]? {
+    public func value<T: Deserializable>() -> [T]? {
         return JSONArray?.flatMap{
             T.mapFromJSON(MapFromJSON(JSON: $0))
         }
     }
     
-    public func value<T: Mappable>() -> [T?]? {
+    public func value<T: Deserializable>() -> [T?]? {
         return JSONArray?.map{
             T.mapFromJSON(MapFromJSON(JSON: $0))
         }
     }
     
-    public func value<T: Mappable>() -> [String: T]? {
+    public func value<T: Deserializable>() -> [String: T]? {
         return JSONDictionary?.mapValues({
             T.mapFromJSON(MapFromJSON(JSON: $0))
         })

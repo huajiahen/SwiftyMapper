@@ -6,10 +6,15 @@
 //  Copyright © 2016 huajiahen. All rights reserved.
 //
 
-public protocol Mappable {
-    static func mapFromJSON(map: MapFromJSON) -> Self?
+public protocol Serializable {
     func mapToJSON(map: MapToJSON)
 }
+
+public protocol Deserializable {
+    static func mapFromJSON(map: MapFromJSON) -> Self?
+}
+
+public protocol Mappable: Serializable, Deserializable {}
 
 extension Int: Mappable {
     public static func mapFromJSON(map: MapFromJSON) -> Int? {
