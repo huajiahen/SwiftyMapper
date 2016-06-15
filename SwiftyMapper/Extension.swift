@@ -10,8 +10,8 @@ import class Foundation.NSDate
 
 extension NSDate {
     public static func mapFromUnixTimeStamp(map: MapFromJSON) -> NSDate? {
-        if let timestamp = map.JSON as? Int {
-            return NSDate(timeIntervalSince1970: Double(timestamp))
+        if let timestamp = map.JSON as? Double {
+            return NSDate(timeIntervalSince1970: timestamp)
         }
         return nil
     }
