@@ -13,21 +13,21 @@ import var Foundation.NSUTF8StringEncoding
 
 public final class MapFromJSON {
     
-    public enum MapFromJSONError: ErrorType {
-        case InvalidJSONString
+    public enum MapFromJSONError: Error {
+        case invalidJSONString
     }
     
-    public let JSON: AnyObject?
+    public let JSON: Any?
     public var isNull: Bool {
         return JSON == nil || JSON is NSNull
     }
     
-    var JSONArray: [AnyObject]? {
-        return JSON as? [AnyObject]
+    var JSONArray: [Any]? {
+        return JSON as? [Any]
     }
     
-    var JSONDictionary: [String: AnyObject]? {
-        return JSON as? [String: AnyObject]
+    var JSONDictionary: [String: Any]? {
+        return JSON as? [String: Any]
     }
     
     //MARK: Deserializable
@@ -56,17 +56,17 @@ public final class MapFromJSON {
     
     //MARK: Object
     
-    public func value<T>(mapper: MapFromJSON -> T) -> T {
+    public func value<T>(_ mapper: (MapFromJSON) -> T) -> T {
         return mapper(MapFromJSON(JSON: JSON))
     }
 
-    public func value<T>(mapper: MapFromJSON -> T?) -> T? {
+    public func value<T>(_ mapper: (MapFromJSON) -> T?) -> T? {
         return mapper(MapFromJSON(JSON: JSON))
     }
     
     //MARK: Obejct array
     
-    public func value<T>(mapper: MapFromJSON -> T) -> [T]? {
+    public func value<T>(_ mapper: (MapFromJSON) -> T) -> [T]? {
         return JSONArray?.flatMap{ object -> T? in
             if object is NSNull {
                 return nil
@@ -75,7 +75,7 @@ public final class MapFromJSON {
         }
     }
     
-    public func value<T>(mapper: MapFromJSON -> T?) -> [T]? {
+    public func value<T>(_ mapper: (MapFromJSON) -> T?) -> [T]? {
         return JSONArray?.flatMap{ object -> T? in
             if object is NSNull {
                 return nil
@@ -84,7 +84,7 @@ public final class MapFromJSON {
         }
     }
     
-    public func value<T>(mapper: MapFromJSON -> T) -> [T?]? {
+    public func value<T>(_ mapper: (MapFromJSON) -> T) -> [T?]? {
         return JSONArray?.map{ object -> T? in
             if object is NSNull {
                 return nil
@@ -93,7 +93,7 @@ public final class MapFromJSON {
         }
     }
     
-    public func value<T>(mapper: MapFromJSON -> T?) -> [T?]? {
+    public func value<T>(_ mapper: (MapFromJSON) -> T?) -> [T?]? {
         return JSONArray?.map{ object -> T? in
             if object is NSNull {
                 return nil
@@ -104,7 +104,7 @@ public final class MapFromJSON {
     
     //MARK: Obejct Dictionary
     
-    public func value<T>(mapper: MapFromJSON -> T) -> [String: T]? {
+    public func value<T>(_ mapper: @escaping (MapFromJSON) -> T) -> [String: T]? {
         return JSONDictionary?.mapValues({ object -> T? in
             if object is NSNull {
                 return nil
@@ -113,7 +113,7 @@ public final class MapFromJSON {
         })
     }
     
-    public func value<T>(mapper: MapFromJSON -> T?) -> [String: T]? {
+    public func value<T>(_ mapper: @escaping (MapFromJSON) -> T?) -> [String: T]? {
         return JSONDictionary?.mapValues({ object -> T? in
             if object is NSNull {
                 return nil
@@ -124,22 +124,22 @@ public final class MapFromJSON {
     
     //MARK: - Init
     
-    public init(JSON: AnyObject?) {
-        if JSON is Int || JSON is Float || JSON is Bool || JSON is String || JSON is [AnyObject] || JSON is [String: AnyObject] {
+    public init(JSON: Any?) {
+        if JSON is Int || JSON is Float || JSON is Bool || JSON is String || JSON is [Any] || JSON is [String: Any] {
             self.JSON = JSON
         } else {
             self.JSON = nil
         }
     }
     
-    public convenience init(JSONData: NSData) throws {
-        let JSON = try NSJSONSerialization.JSONObjectWithData(JSONData, options: .AllowFragments)
+    public convenience init(JSONData: Data) throws {
+        let JSON = try JSONSerialization.jsonObject(with: JSONData, options: .allowFragments)
         self.init(JSON: JSON)
     }
     
     public convenience init(JSONString: String) throws {
-        guard let data = JSONString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) else {
-            throw MapFromJSONError.InvalidJSONString
+        guard let data = JSONString.data(using: String.Encoding.utf8, allowLossyConversion: true) else {
+            throw MapFromJSONError.invalidJSONString
         }
         try self.init(JSONData: data)
     }
@@ -151,7 +151,7 @@ public final class MapFromJSON {
     }
     
     public subscript(key: Int) -> MapFromJSON {
-        guard let JSONArray = JSONArray where JSONArray.indices ~= key else {
+        guard let JSONArray = JSONArray , JSONArray.indices ~= key else {
             return MapFromJSON(JSON: nil)
         }
         return MapFromJSON(JSON: JSONArray[key])

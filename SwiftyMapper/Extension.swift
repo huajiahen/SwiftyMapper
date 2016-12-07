@@ -8,22 +8,22 @@
 
 import class Foundation.NSDate
 
-extension NSDate {
-    public static func mapFromUnixTimeStamp(map: MapFromJSON) -> NSDate? {
-        if let timestamp = map.JSON as? Double {
-            return NSDate(timeIntervalSince1970: timestamp)
+extension Date {
+    public static func mapFromUnixTimeStamp(_ map: MapFromJSON) -> Date? {
+        if let timestamp = map.JSON as? Int {
+            return Date(timeIntervalSince1970: TimeInterval(timestamp))
         }
         return nil
     }
     
-    public func mapToUnixTimeStamp(map: MapToJSON) {
+    public func mapToUnixTimeStamp(_ map: MapToJSON) {
         let timestamp = Int(timeIntervalSince1970)
         map.JSON = timestamp
     }
 }
 
 extension Dictionary {
-    func mapValues<T>(transform: Value -> T?) -> [Key: T] {
+    func mapValues<T>(_ transform: (Value) -> T?) -> [Key: T] {
         var resultDict: [Key: T] = [:]
         for (key, value) in self {
             resultDict[key] = transform(value)

@@ -29,20 +29,20 @@ class Car {
         return car
     }
     
-    static func failableInit(map: MapFromJSON) -> Car? {
+    static func failableInit(_ map: MapFromJSON) -> Car? {
         guard !map["name"].isNull && !map["type"].isNull else {
             return nil
         }
         return Car(map: map)
     }
     
-    func mapFrom(map: MapFromJSON) {
+    func mapFrom(_ map: MapFromJSON) {
         name = map["name"].value()
         type = map["type"].value() ?? "none"
     }
     
-    func mapTo(map: MapToJSON) {
-        map["name"].map(name)
-        map["type"].map(type)
+    func mapTo(_ map: MapToJSON) {
+        _ = map["name"].map(name)
+        _ = map["type"].map(type)
     }
 }

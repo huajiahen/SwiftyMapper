@@ -183,7 +183,7 @@ class SwiftyMapperFromJSONTests: XCTestCase {
     func testMappingObjectArrayFromJSON2() {
         let name = "BMW"
         let type = "SUV"
-        let JSON = [["name": name, "type": type], NSNull()]
+        let JSON = [["name": name, "type": type], NSNull()] as [Any]
         
         let aMap = MapFromJSON(JSON: JSON)
         let carArray: [Car?]? = aMap.value(Car.init)
@@ -199,7 +199,7 @@ class SwiftyMapperFromJSONTests: XCTestCase {
     func testMappingOptionalObjectArrayFromJSON() {
         let name = "BMW"
         let type = "SUV"
-        let JSON = [["name": name, "type": type], ["name": name], NSNull()]
+        let JSON = [["name": name, "type": type], ["name": name], NSNull()] as [Any]
         
         let aMap = MapFromJSON(JSON: JSON)
         let carArray: [Car?]? = aMap.value(Car.failableInit)
@@ -228,7 +228,7 @@ class SwiftyMapperFromJSONTests: XCTestCase {
     func testMappingOptionalObjectDictionaryFromJSON() {
         let name = "Tokyo"
         let type = "car"
-        let JSON = ["car1": ["name": name, "type": type], "car2": ["name": name], "car3": NSNull()]
+        let JSON = ["car1": ["name": name, "type": type], "car2": ["name": name], "car3": NSNull()] as [String : Any]
         
         let aMap = MapFromJSON(JSON: JSON)
         let carDict: [String: Car]? = aMap.value(Car.failableInit)

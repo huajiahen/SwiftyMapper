@@ -21,14 +21,14 @@ class SwiftyMapperToJSONTests: XCTestCase {
         let stringValue = "good"
 
         let map = MapToJSON()
-        map["bool"].map(boolValue)
-        map["int"].map(intValue)
-        map["float"].map(floatValue)
-        map["double"].map(doubleValue)
-        map["string"].map(stringValue)
-        map["nil"].map(nil)
+        _ = map["bool"].map(boolValue)
+        _ = map["int"].map(intValue)
+        _ = map["float"].map(floatValue)
+        _ = map["double"].map(doubleValue)
+        _ = map["string"].map(stringValue)
+        _ = map["nil"].map(nil)
         
-        let JSON = map.JSON as? [String: AnyObject]
+        let JSON = map.JSON as? [String: Any]
         
         XCTAssertNotNil(JSON)
         XCTAssertEqual(JSON?["bool"] as? Bool, boolValue)
@@ -47,7 +47,7 @@ class SwiftyMapperToJSONTests: XCTestCase {
     
     func testMapOptionalMappableArrayToJSON() {
         let intArray: [Int?] = [1, 2, 3, nil]
-        let JSON = MapToJSON().map(intArray).JSON as? [AnyObject]
+        let JSON = MapToJSON().map(intArray).JSON as? [Any]
 
         XCTAssertNotNil(JSON)
         XCTAssertEqual(JSON?[0] as? Int, 1)
@@ -62,7 +62,7 @@ class SwiftyMapperToJSONTests: XCTestCase {
     
     func testMapOptionalMappableDictionaryToJSON() {
         let intDict: [String: Int?] = ["key1": 1, "key2": nil]
-        let JSON = MapToJSON().map(intDict).JSON as? [String: AnyObject]
+        let JSON = MapToJSON().map(intDict).JSON as? [String: Any]
         XCTAssertNotNil(JSON)
 
         XCTAssertEqual(JSON?["key1"] as? Int, 1)
@@ -73,7 +73,7 @@ class SwiftyMapperToJSONTests: XCTestCase {
     
     func testMapObjectToJSONAlternative() {
         let car = Car.configuredCar()
-        let JSON = MapToJSON().map(car.mapTo).JSON as? [String: AnyObject]
+        let JSON = MapToJSON().map(car.mapTo).JSON as? [String: Any]
         XCTAssertNotNil(JSON)
 
         XCTAssertEqual(JSON?["type"] as? String, car.type)
@@ -82,13 +82,13 @@ class SwiftyMapperToJSONTests: XCTestCase {
     
     func testMapObjectToJSONAlternative2() {
         let car: Car? = nil
-        let JSON = MapToJSON().map(car?.mapTo).JSON as? [String: AnyObject]
+        let JSON = MapToJSON().map(car?.mapTo).JSON as? [String: Any]
         XCTAssertNil(JSON)
     }
     
     func testMapObjectToJSON() {
         let car = Car.configuredCar()
-        let JSON = MapToJSON().map(car, mapper: Car.mapTo).JSON as? [String: AnyObject]
+        let JSON = MapToJSON().map(car, mapper: Car.mapTo).JSON as? [String: Any]
         XCTAssertNotNil(JSON)
         
         XCTAssertEqual(JSON?["type"] as? String, car.type)
@@ -105,7 +105,7 @@ class SwiftyMapperToJSONTests: XCTestCase {
     func testMapObjectArrayToJSON() {
         let car = Car.configuredCar()
         let carArray = [car]
-        let JSON = MapToJSON().map(carArray, mapper: Car.mapTo).JSON as? [[String: AnyObject]]
+        let JSON = MapToJSON().map(carArray, mapper: Car.mapTo).JSON as? [[String: Any]]
 
         XCTAssertNotNil(JSON)
         
@@ -123,7 +123,7 @@ class SwiftyMapperToJSONTests: XCTestCase {
     func testMapOptionalObjectArrayToJSON() {
         let car = Car.configuredCar()
         let carArray: [Car?] = [car, nil]
-        let JSON = MapToJSON().map(carArray, mapper: Car.mapTo).JSON as? [AnyObject]
+        let JSON = MapToJSON().map(carArray, mapper: Car.mapTo).JSON as? [Any]
         
         XCTAssertNotNil(JSON)
         
@@ -143,7 +143,7 @@ class SwiftyMapperToJSONTests: XCTestCase {
     func testMapObjectDictionaryToJSON() {
         let car = Car.configuredCar()
         let carDict = ["car": car]
-        let JSON = MapToJSON().map(carDict, mapper: Car.mapTo).JSON as? [String: [String: AnyObject]]
+        let JSON = MapToJSON().map(carDict, mapper: Car.mapTo).JSON as? [String: [String: Any]]
         
         XCTAssertNotNil(JSON)
         
@@ -160,11 +160,11 @@ class SwiftyMapperToJSONTests: XCTestCase {
     func testMapOptionalObjectDictionaryToJSON() {
         let car = Car.configuredCar()
         let carDict: [String: Car?] = ["car": car, "nil": nil]
-        let JSON = MapToJSON().map(carDict, mapper: Car.mapTo).JSON as? [String: AnyObject]
+        let JSON = MapToJSON().map(carDict, mapper: Car.mapTo).JSON as? [String: Any]
         
         XCTAssertNotNil(JSON)
         
-        let carJSON = JSON?["car"] as? [String: AnyObject]
+        let carJSON = JSON?["car"] as? [String: Any]
         XCTAssertNotNil(carJSON)
         XCTAssertEqual(carJSON?["type"] as? String, car.type)
         XCTAssertEqual(carJSON?["name"] as? String, car.name)

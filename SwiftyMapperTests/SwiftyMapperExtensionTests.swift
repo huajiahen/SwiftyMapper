@@ -15,15 +15,15 @@ class SwiftyMapperExtensionTests: XCTestCase {
         let JSON = ["timestamp": timeStamp]
         let map = MapFromJSON(JSON: JSON)
         
-        let mappedDate: NSDate? = map["timestamp"].value(NSDate.mapFromUnixTimeStamp)
-        XCTAssertEqual(mappedDate, NSDate(timeIntervalSince1970: Double(timeStamp)))
+        let mappedDate: Date? = map["timestamp"].value(Date.mapFromUnixTimeStamp)
+        XCTAssertEqual(mappedDate, Date(timeIntervalSince1970: Double(timeStamp)))
     }
     
     func testMapDateToJSON() {
         let timeStamp = 233
-        let date = NSDate(timeIntervalSince1970: Double(timeStamp))
+        let date = Date(timeIntervalSince1970: Double(timeStamp))
         let JSON = ["timestamp": date]
-        let map = MapToJSON().map(JSON, mapper: NSDate.mapToUnixTimeStamp)
+        let map = MapToJSON().map(JSON, mapper: Date.mapToUnixTimeStamp)
         let mappedJSON = map.JSON as? [String: Int]
         XCTAssertNotNil(mappedJSON)
         XCTAssertEqual(mappedJSON?["timestamp"], timeStamp)

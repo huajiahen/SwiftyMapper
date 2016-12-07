@@ -6,22 +6,18 @@
 //  Copyright © 2016 huajiahen. All rights reserved.
 //
 
-infix operator <- {
-    associativity left
-    precedence 90
-    assignment
-}
+infix operator <-: AssignmentPrecedence
 
-public func <-<T: Mappable>(inout lhs: T, rhs: MapFromJSON) {
+public func <-<T: Mappable>(lhs: inout T, rhs: MapFromJSON) {
     if let unwrapped: T = rhs.value() {
         lhs = unwrapped
     }
 }
 
-public func <-<T: Mappable>(inout lhs: T?, rhs: MapFromJSON) {
+public func <-<T: Mappable>(lhs: inout T?, rhs: MapFromJSON) {
     lhs = rhs.value()
 }
 
 public func <-<T: Mappable>(lhs: T?, rhs: MapToJSON) {
-    rhs.map(lhs)
+    _ = rhs.map(lhs)
 }
