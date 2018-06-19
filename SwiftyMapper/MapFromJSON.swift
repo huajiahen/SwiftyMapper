@@ -37,7 +37,7 @@ public final class MapFromJSON {
     }
     
     public func value<T: Deserializable>() -> [T]? {
-        return JSONArray?.flatMap{
+        return JSONArray?.compactMap{
             T.mapFromJSON(MapFromJSON(JSON: $0))
         }
     }
@@ -67,7 +67,7 @@ public final class MapFromJSON {
     //MARK: Obejct array
     
     public func value<T>(_ mapper: (MapFromJSON) -> T) -> [T]? {
-        return JSONArray?.flatMap{ object -> T? in
+        return JSONArray?.compactMap{ object -> T? in
             if object is NSNull {
                 return nil
             }
@@ -76,7 +76,7 @@ public final class MapFromJSON {
     }
     
     public func value<T>(_ mapper: (MapFromJSON) -> T?) -> [T]? {
-        return JSONArray?.flatMap{ object -> T? in
+        return JSONArray?.compactMap{ object -> T? in
             if object is NSNull {
                 return nil
             }

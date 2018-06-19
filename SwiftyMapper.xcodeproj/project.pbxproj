@@ -372,12 +372,12 @@
 				TargetAttributes = {
 					6D03CD7A1C5E150D0059EAC9 = {
 						CreatedOnToolsVersion = 7.2;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0940;
 					};
 					6D03CD841C5E150D0059EAC9 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = SSCP548P5J;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0940;
 					};
 					6DCFCF2E1C7B4B16008ECFCF = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -685,7 +685,7 @@
 				PRODUCT_NAME = SwiftyMapper;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -706,7 +706,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = huajiahen.SwiftyMapper;
 				PRODUCT_NAME = SwiftyMapper;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -718,7 +718,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = huajiahen.SwiftyMapperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -730,7 +730,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = huajiahen.SwiftyMapperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
