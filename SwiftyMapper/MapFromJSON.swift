@@ -125,7 +125,7 @@ public final class MapFromJSON {
     //MARK: - Init
     
     public init(JSON: Any?) {
-        if JSON is Int || JSON is Float || JSON is Bool || JSON is String || JSON is [Any] || JSON is [String: Any] {
+        if JSON is Int || JSON is Float || JSON is Double || JSON is Bool || JSON is String || JSON is [Any] || JSON is [String: Any] {
             self.JSON = JSON
         } else {
             self.JSON = nil
