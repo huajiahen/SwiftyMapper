@@ -28,7 +28,8 @@ extension Int: Mappable {
 
 extension Float: Mappable {
     public static func mapFromJSON(_ map: MapFromJSON) -> Float? {
-        return map.JSON as? Float
+        let json = map.JSON as? NSNumber
+        return json?.floatValue
     }
     
     public func mapToJSON(_ map: MapToJSON) {
